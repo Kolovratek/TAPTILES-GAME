@@ -1,0 +1,146 @@
+﻿@using System.Diagnostics
+﻿@using TaptilesWeb.Models
+@model TaptilesModel
+
+@{
+	ViewData[":linkitle"] = "Taptiles";
+}
+@{var count=0;}
+
+<body class="bgplay">
+	<div class="logo">
+		<img src="/images/logo/Taptiles.png" width="400" height="100" />
+	</div>
+
+	<div class = "button_center">
+		<div class="service_button_s">
+			<a href="https://localhost:7238/Score">
+				Score
+			</a>
+		</div>
+
+		<div class="service_button_r">
+			<a href="https://localhost:7238/Rating">
+				Rating
+			</a>
+		</div>
+
+		<div class="service_button_c">
+			<a href="https://localhost:7238/Comment">
+				Comment
+			</a>
+		</div>
+	</div>
+
+	<div class="restart_button">
+		<a href="https://localhost:7238/Taptiles">
+			<img src="/images/button/Restart_button.png" width="50" height="50" />
+		</a>
+		<h6>Restart</h6>
+	</div>
+
+	<div class="back_button">
+		<a href="https://localhost:7238">
+			<img src="/images/button/Back_button.png" width="70" height="30" />
+		</a>
+		<h6>Menu</h6>
+	</div>
+
+	<div class="button_pos">
+		<form action="/Taptiles/AddName" method="get">
+			Player name: <input type="text" name="Player" placeholder="Milan"/><br/>
+			<input type="submit"><br/>
+		</form>
+		<br>
+		<form action="/Taptiles/AddComment" method="get">
+			Player name: <input type="text" name="Player" placeholder="Milan"/><br/>
+			Your comment: <input type="text" name="Coment" placeholder="Super hra"/><br/>
+			<input type="submit"/><br />
+		</form>
+		<br>
+		<form action="/Taptiles/AddRating" method="get">
+			Player name: <input type="text" name="Player" placeholder="Milan"/><br/>
+			Your rating: <input type="text" name="Stars" placeholder="1-5"/><br/>
+			<input type="submit"/><br />
+		</form>
+	</div>
+
+	<input type="hidden" id="coordinates" />
+
+	<table id="game-table" class="table_center">
+		@for (int row = 0; row < Model.Field.Row; row++)
+		{
+			<tr>
+				@for(var column = 0; column < Model.Field.Column; column++)
+				{
+					var tile = Model.Field[row, column];
+					<td>
+						<div class="fruit" data-row="@(row)" data-col="@(column)">
+							<center><img src="/images/tiles//img@(tile.Value).png" width="75" height="75"></center>
+							@if(tile.Value==5){
+								count++;
+							}
+						</div>
+					</td>
+				}
+			</tr>
+		}
+		
+		@if (count == 16)
+		{
+			<script>
+				function Open() {
+					location.href = 'https://localhost:7238/Win';
+				}
+			</script>
+		}else{
+			<script>
+				function Open() {
+				  alert("Musíš dohrať hru a zadať meno");
+				}
+			</script>
+		}
+	</table>
+
+	<div class="end_game">
+		<button disabled id="mySubmit" class="button_end_game" onclick="Open()">Koniec hry</button>
+	</div>
+
+	@if(count==0)
+	{
+		<script>
+			alert('Aby si mohol ukončiť hru musíš zadať meno');
+		</script>
+	}
+
+	@if(count<16){
+		<script>
+				document.getElementById("mySubmit").disabled = true;
+		</script>
+	}else{
+		<script>
+				document.getElementById("mySubmit").disabled = false;
+		</script>
+	}
+
+	<style>
+		a:visited {
+		  color: black;
+		  background-color: transparent;
+		  text-decoration: none;
+		}
+
+		a:hover {
+		  color: #33ff33;
+		  background-color: transparent;
+		  text-decoration: underline;
+		}
+
+		h6{
+        color: black;
+		}
+	</style>
+
+	
+
+</body>

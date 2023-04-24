@@ -1,0 +1,74 @@
+﻿<div class="back_button">
+	<a href="https://localhost:7238">
+		<img src="/images/button/Back_button.png" width="70" height="30" />
+	</a>
+    <h6>Menu</h6>
+</div>
+
+<h1>Comments</h1>
+
+<table class="content-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Comments</th>
+            <th>PlayedAt</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var coment in Model.Coments)
+        {
+            <tr>
+            <td>@coment.Player</td>
+            <td>@coment.Comment</td>
+            <td>@coment.PlayedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<style>
+    h1{
+        text-align: center;
+    }
+    .content-table{
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+        min-width: 400px;
+        position: absolute;
+        left: 40%;
+    }
+
+    .content-table thead tr{
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+    }
+
+    .content-table th,
+    .content-table td{
+        padding: 12px 15px;
+    }
+
+    .content-table tbody tr{
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .content-table tbody tr:nth-of-type(even){
+        background-color: #f3f3f3;
+    }
+
+    .content-table tbody tr:last-of-type{
+        border-bottom: 2px solid #009879;
+    }
+
+    h6{
+        color: black;
+    }
+</style>

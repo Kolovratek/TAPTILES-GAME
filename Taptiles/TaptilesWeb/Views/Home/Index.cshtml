@@ -1,0 +1,57 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<body class="bghome">
+	<div class="button_pos">
+		<a href="https://localhost:7238/Taptiles">
+			Play
+		</a>
+		<br>
+		<a href="https://localhost:7238/Score">
+			Score
+		</a>
+		<br>
+		<a href="https://localhost:7238/Rating">
+			Rating
+		</a>
+		<br>
+		<a href="https://localhost:7238/Comment">
+			Comment
+		</a>
+	</div>
+</body>
+
+<style >
+/*styling background*/
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    font-family: sans-serif;
+    }
+
+/* styling the button*/
+    a {
+    padding: 0px 10px;
+    display: inline-block;
+    color: #FF5F1F;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 3em;
+    overflow: hidden;
+    }
+
+    /*creating animation effect*/
+    a:hover {
+        color: #111;
+        background: #FF5F1F;
+        box-shadow: 0 0 50px #FF5F1F;
+    }
+
+</style >
